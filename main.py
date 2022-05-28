@@ -2,6 +2,27 @@ import email, smtplib, ssl
 from providers import PROVIDERS
 import requests
 import json
+import pymongo
+from pymongo import MongoClient
+from pprint import pprint
+
+from pymongo import MongoClient
+
+# creation of MongoClient
+
+cluster = "mongodb+srv://Phone_Data:Books9526@cluster0.xzech.mongodb.net/?retryWrites=true&w=majority"
+
+client = MongoClient(cluster)
+
+mydb = client["myFirstDatabase"]
+mycol = mydb["myFirstDatabase"]
+
+# record = {
+#     "name": "Aida",
+#     "phone": "5038288830",
+# }
+#
+# mycol.insert_one(record)
 
 def return_carrier(number):
 
@@ -18,7 +39,6 @@ def return_carrier(number):
         return "Verizon"
     elif "cingular wireless" in carrier or "at&t" in carrier:
         return "AT&T"
-
 
 def send_sms_via_email(
     number: str,
@@ -42,13 +62,14 @@ def send_sms_via_email(
 
 def main():
 
-    number = "5038589526"
-    message = "if I had $100 for how many hoes you got, I would have $0."
+    number = input("PHONE NUMBER: ")
+    message = "HI!"
     provider = return_carrier(number)
+
+    print(provider)
 
     sender_credentials = ("fakhrysms@gmail.com", "edojjjulohwtcgmd")
 
-    # SMS
     send_sms_via_email(number, message, provider, sender_credentials)
 
 
