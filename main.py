@@ -1,28 +1,10 @@
-import email, smtplib, ssl
+import smtplib, ssl
 from providers import PROVIDERS
 import requests
 import json
-import pymongo
 from pymongo import MongoClient
-from pprint import pprint
-
-from pymongo import MongoClient
-
-# creation of MongoClient
-
-cluster = "mongodb+srv://Phone_Data:Books9526@cluster0.xzech.mongodb.net/?retryWrites=true&w=majority"
-
-client = MongoClient(cluster)
-
-mydb = client["myFirstDatabase"]
-mycol = mydb["myFirstDatabase"]
-
-# record = {
-#     "name": "Aida",
-#     "phone": "5038288830",
-# }
-#
-# mycol.insert_one(record)
+from MongoDBIterate import iterate_DB
+from MongoDBInsert import add_database
 
 def return_carrier(number):
 
@@ -61,6 +43,13 @@ def send_sms_via_email(
         email.sendmail(sender_email, receiver_email, email_message)
 
 def main():
+
+    password = input("MongoDB Password: ")
+    cluster = f"mongodb+srv://Phone_Data:{password}@cluster0.xzech.mongodb.net/?retryWrites=true&w=majority"
+
+    iterate_DB(cluster)
+
+    add_database(cluster)
 
     number = input("PHONE NUMBER: ")
     message = "HI!"
