@@ -2,9 +2,7 @@ import smtplib, ssl
 from providers import PROVIDERS
 import requests
 import json
-from pymongo import MongoClient
 from MongoDBIterate import iterate_DB
-from MongoDBInsert import add_database
 from ExcelIterate import iterate_excel
 
 def return_carrier(number):
@@ -16,12 +14,18 @@ def return_carrier(number):
     carrier = data["carrier"]["name"]
     carrier = carrier.lower()
 
-    if "t-mobile" in carrier or "omnipoint" in carrier:
+    if "t-mobile" in carrier or "omnipoint" in carrier or "ultra" in carrier or "metro" in carrier:
         return "T-Mobile"
+    elif "sprint" in carrier:
+        return "Sprint"
     elif "verizon" in carrier:
         return "Verizon"
-    elif "cingular wireless" in carrier or "at&t" in carrier:
+    elif "cingular wireless" in carrier or "at&t" in carrier or "cricket" in carrier or "southwestern" in carrier:
         return "AT&T"
+    elif "boost" in carrier:
+        return "Boost Mobile"
+    elif "google" in carrier:
+        return "Google Project Fi"
 
 def send_sms_via_email(
     number: str,
@@ -34,7 +38,6 @@ def send_sms_via_email(
 ):
     sender_email, email_password = sender_credentials
     receiver_email = f'{number}@{PROVIDERS.get(provider).get("sms")}'
-
     email_message = f"Subject:{subject}\nTo:{receiver_email}\n{message}"
 
     with smtplib.SMTP_SSL(
@@ -49,16 +52,7 @@ def main():
     cluster = f"mongodb+srv://Phone_Data:{password}@cluster0.xzech.mongodb.net/?retryWrites=true&w=majority"
 
     iterate_excel(cluster)
-
-    number = input("PHONE NUMBER: ")
-    message = "HI!"
-    provider = return_carrier(number)
-
-    print(provider)
-
-    sender_credentials = ("fakhrysms@gmail.com", "edojjjulohwtcgmd")
-
-    send_sms_via_email(number, message, provider, sender_credentials)
+    iterate_DB(cluster)
 
 
 if __name__ == "__main__":
