@@ -1,11 +1,8 @@
-from pymongo import MongoClient
+def iterate_DB(cluster, mycol):
 
-def iterate_DB(cluster):
-
-    client = MongoClient(cluster)
-
-    mydb = client["myFirstDatabase"]
-    mycol = mydb["myFirstDatabase"]
+    curr_list = []
 
     for val in mycol.find():
-        print(val["name"], int(val["number"]))
+        curr_list.append(val["name"])
+
+    return curr_list

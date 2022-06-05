@@ -26,4 +26,16 @@ def company_review(company, version):
         if version == "mobile":
             return "http://shorturl.at/hjnIM"
         return "https://shorturl.at/szCNT"
-    
+    elif company == "Bridge":
+        if version == "mobile":
+            return "https://shorturl.at/aflKW"
+        return "https://shorturl.at/flJW5"
+    elif company == "Beyond":
+        if version == "mobile":
+            return "https://shorturl.at/duOSZ"
+        return "https://shorturl.at/rGZ67"
+    elif company == "Exceptional":
+        if version == "mobile":
+            return ""
+        else:
+            return "https://shorturl.at/ckoHX"

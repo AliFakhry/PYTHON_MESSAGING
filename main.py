@@ -4,6 +4,16 @@ import requests
 import json
 from MongoDBIterate import iterate_DB
 from ExcelIterate import iterate_excel
+from Message_Review import init_message
+from pymongo import MongoClient
+
+def send_msg(number, carrier, name, company):
+
+    message = init_message(number, carrier, name, company)
+    provider = return_carrier(number)
+    if not provider == False:
+        sender_credentials = ("fakhrysms@gmail.com", "edojjjulohwtcgmd")
+        send_sms_via_email(number, message, provider, sender_credentials)
 
 def return_carrier(number):
 
@@ -26,6 +36,8 @@ def return_carrier(number):
         return "Boost Mobile"
     elif "google" in carrier:
         return "Google Project Fi"
+    else:
+        return False
 
 def send_sms_via_email(
     number: str,
@@ -51,9 +63,21 @@ def main():
     password = input("MongoDB Password: ")
     cluster = f"mongodb+srv://Phone_Data:{password}@cluster0.xzech.mongodb.net/?retryWrites=true&w=majority"
 
-    iterate_excel(cluster)
-    iterate_DB(cluster)
+    client = MongoClient(cluster)
+    mydb = client["myFirstDatabase"]
+    mycol = mydb["myFirstDatabase"]
 
+    mycol.delete_many({})
+
+    iterate_excel(cluster, mycol)
+    current_names = iterate_DB(cluster, mycol)
+    print(current_names)
+
+    phone_num = str(input("INPUT PHONE NUMBER: "))
+    try:
+        send_msg(phone_num, "AT&T", "Ali", "WCE")
+    except:
+        print("Did not work")
 
 if __name__ == "__main__":
     main()

@@ -1,29 +1,19 @@
 import openpyxl
 from MongoDBInsert import add_database
-from pymongo import MongoClient
+import os
 
-def iterate_excel(cluster):
+def iterate_excel(cluster, mycol):
 
-    client = MongoClient(cluster)
-    mydb = client["myFirstDatabase"]
-    mycol = mydb["myFirstDatabase"]
-
-    mycol.delete_many({})
-
-    excel_sheet = openpyxl.load_workbook("Excel_Test.xlsx")
-
+    open_str = os.path.expanduser("~/Downloads/GetFeedback/Customers.xlsx")
+    excel_sheet = openpyxl.load_workbook(open_str)
     sh = excel_sheet.active
 
-    #PPBSa4f3ZwPlI0NC
-
-    for i in range(2, sh.max_row + 1):
-        new_arr = []
+    for i in range(6, sh.max_row + 1):
         print("\n")
-        for j in range(1, sh.max_column + 1):
-            test_obj = sh.cell(row=1, column=j)
-            if str(test_obj.value) == "Name" or str(test_obj.value) == "Number":
+        for j in range(2, sh.max_column + 1):
+            test_obj = sh.cell(row=5, column=j)
+            if str(test_obj.value) == "Customer":
                 cell_obj = sh.cell(row=i, column=j)
-                new_arr.append(str(cell_obj.value))
-        add_database(cluster, new_arr[0], new_arr[1])
+                add_database(cluster, cell_obj.value, mycol)
 
     print("\n")
