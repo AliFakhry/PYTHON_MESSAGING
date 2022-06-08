@@ -36,6 +36,6 @@ def company_review(company, version):
         return "https://shorturl.at/rGZ67"
     elif company == "Exceptional":
         if version == "mobile":
-            return ""
+            return "https://shorturl.at/jkoxO"
         else:
             return "https://shorturl.at/ckoHX"
