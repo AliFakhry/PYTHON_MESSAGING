@@ -1,9 +1,13 @@
-def init_message(number, carrier, name, company):
-    message_1 = f"Hello {name},\n"
+def init_message_1(name, company):
+    message_1 = f"\nHello {name},\n"
     message_2 = f"Thank you for doing your business with {company}!\n"
-    message_3 = f"If possible, could you please tell us what you though about our service?\n"
-    message_4 = f"We appreciate your feedback."
-    t_message = message_1 + message_2 + message_3 + message_4
+    t_message = message_1 + message_2
+    return t_message
+
+def init_message_2():
+    message_1 = f"If possible, could you tell us what you thought about our service?\n"
+    message_2 = f"We appreciate your feedback."
+    t_message = message_1 + message_2
     return t_message
 
 def pos_message(number, carrier, name, company):

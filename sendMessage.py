@@ -2,17 +2,21 @@ import smtplib, ssl
 from providers import PROVIDERS
 import requests
 import json
-from Message_Review import init_message
+from Message_Review import init_message_1
+from Message_Review import init_message_2
 
-def send_msg(number, carrier, name, company):
+def send_msg(number, provider, name, company, email, password):
 
-    pass
-#
-#     message = init_message(number, carrier, name, company)
-#     provider = return_carrier(number)
-#     if not provider == False:
-#         sender_credentials = ("fakhrysms@gmail.com", "edojjjulohwtcgmd")
-#         send_sms_via_email(number, message, provider, sender_credentials)
+    user_input = input("SUBMIT MESSAGE: ")
+    if user_input == "YES":
+        print(email)
+        print(password)
+        message_1 = init_message_1(name, company)
+        message_2 = init_message_2()
+        if not provider == False:
+            sender_credentials = (email, password)
+            send_sms_via_email(number, message_1 + message_2, provider, sender_credentials)
+
 
 def return_carrier(number):
 
