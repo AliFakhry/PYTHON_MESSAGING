@@ -7,15 +7,13 @@ from Message_Review import init_message_2
 
 def send_msg(number, provider, name, company, email, password):
 
-    user_input = input("SUBMIT MESSAGE: ")
-    if user_input == "YES":
-        print(email)
-        print(password)
-        message_1 = init_message_1(name, company)
-        message_2 = init_message_2()
-        if not provider == False:
-            sender_credentials = (email, password)
-            send_sms_via_email(number, message_1 + message_2, provider, sender_credentials)
+    return
+    #
+    # message_1 = init_message_1(name, company)
+    # message_2 = init_message_2()
+    # if not provider == False:
+    #     sender_credentials = (email, password)
+    #     send_sms_via_email(number, message_1 + message_2, provider, sender_credentials)
 
 
 def return_carrier(number):

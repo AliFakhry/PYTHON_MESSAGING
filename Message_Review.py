@@ -5,7 +5,7 @@ def init_message_1(name, company):
     return t_message
 
 def init_message_2():
-    message_1 = f"If possible, could you tell us what you thought about our service?\n"
+    message_1 = f"\nIf possible, could you tell us what you thought about our service?\n"
     message_2 = f"We appreciate your feedback."
     t_message = message_1 + message_2
     return t_message

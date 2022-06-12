@@ -12,6 +12,7 @@ def main():
     client = MongoClient(cluster)
     mydb = client["Names"]
     mycol = ""
+    prevdb = ""
     email = ""
     pass_word = ""
 
@@ -31,6 +32,7 @@ def main():
                 mycol = mydb["WCE"]
             elif company == "Bridge City Cleaning":
                 mycol = mydb["Bridge"]
+                prevdb = mydb["Bridge_Initial"]
                 email = "bridgecitycleaningsms@gmail.com"
                 pass_word = "yyunsmbscqsjfsez"
                 number = input("PHONE NUMBER: ")
@@ -40,6 +42,7 @@ def main():
                 add_database(name, mycol)
             elif company == "Exceptional Cleaning":
                 mycol = mydb["Exceptional"]
+                prevdb = mydb["Exceptional_Cleaning"]
                 email = "exceptionalcleaningsms@gmail.com"
                 pass_word = "kdwwpdqaegahtafv"
                 number = input("PHONE NUMBER: ")
@@ -54,10 +57,12 @@ def main():
             mycol = mydb["WCE"]
         elif company == "Bridge City Cleaning":
             mycol = mydb["Bridge"]
+            prevdb = mydb["Bridge_Initial"]
             email = "bridgecitycleaningsms@gmail.com"
             pass_word = "yyunsmbscqsjfsez"
         elif company == "Exceptional Cleaning":
             mycol = mydb["Exceptional"]
+            prevdb = mydb["Exceptional_Cleaning"]
             email = "exceptionalcleaningsms@gmail.com"
             pass_word = "jhoedjjxlzysgxqq"
 
@@ -65,12 +70,14 @@ def main():
         clear_database = input("CLEAR DATA BASE: ")
         if clear_database == "YES":
             mycol.delete_many({})
-
-        if company != "Test":
-            current_names = iterate_DB(mycol)
-            iterate_excel(mycol, company, current_names, email, pass_word)
     except:
         print("NO DB.")
+
+    send_message = input("SEND MESSAGES (YES/NO) : ")
+    if send_message == "YES":
+        if send_type != "TEST":
+            current_names = iterate_DB(mycol)
+            iterate_excel(mycol, prevdb, company, current_names, email, pass_word)
 
 if __name__ == "__main__":
     main()
