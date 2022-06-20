@@ -27,11 +27,11 @@ def iterate_excel(mycol, prev_db, company, curr_names, email, password):
             continue
         else:
             if cust_name not in curr_names:
-                try:
                     add_database(cust_name, mycol)
                     print(cust_name, cust_number)
-                    #send_msg(cust_number, return_carrier(cust_number), cust_name, company, email, password)
-                except:
-                    continue
+                    try:
+                        send_msg(cust_number, return_carrier(cust_number), cust_name, company, email, password)
+                    except:
+                        continue
 
     print("\n")

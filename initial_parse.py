@@ -16,7 +16,6 @@ def main():
     sh = excel_sheet.active
     mycol = mydb[f"{company}_Initial"]
 
-
     customers_index = False
     numebrs_index = False
     start_index = False

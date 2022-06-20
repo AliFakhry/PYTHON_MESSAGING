@@ -4,16 +4,16 @@ import requests
 import json
 from Message_Review import init_message_1
 from Message_Review import init_message_2
+import time
+
 
 def send_msg(number, provider, name, company, email, password):
 
-    return
-    #
-    # message_1 = init_message_1(name, company)
-    # message_2 = init_message_2()
-    # if not provider == False:
-    #     sender_credentials = (email, password)
-    #     send_sms_via_email(number, message_1 + message_2, provider, sender_credentials)
+    message_1 = init_message_1(name, company)
+    message_2 = init_message_2()
+    if not provider == False:
+          sender_credentials = (email, password)
+          send_sms_via_email(number, message_1 + message_2, provider, sender_credentials)
 
 
 def return_carrier(number):
@@ -24,6 +24,8 @@ def return_carrier(number):
     data = json.loads(html)
     carrier = data["carrier"]["name"]
     carrier = carrier.lower()
+
+    time.sleep(3)
 
     if "t-mobile" in carrier or "omnipoint" in carrier or "ultra" in carrier or "metro" in carrier:
         return "T-Mobile"

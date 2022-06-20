@@ -1,12 +1,12 @@
 def init_message_1(name, company):
     message_1 = f"\nHello {name},\n"
-    message_2 = f"Thank you for doing your business with {company}!\n"
+    message_2 = f"\nThank you for doing business with {company}!\n"
     t_message = message_1 + message_2
     return t_message
 
 def init_message_2():
-    message_1 = f"\nIf possible, could you tell us what you thought about our service?\n"
-    message_2 = f"We appreciate your feedback."
+    message_1 = f"\nPlease rate your experience from 1-5.\n"
+    message_2 = f"\nWe appreciate your feedback."
     t_message = message_1 + message_2
     return t_message
 
