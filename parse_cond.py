@@ -7,7 +7,7 @@ from sendMessage import return_carrier
 
 def primary(mongo_entry, type_entry, com_entry, clear_entry, send_entry, phone_entry, name_entry):
 
-    cluster = f"mongodb+srv://Phone_Data:{mongo_entry}@cluster0.xzech.mongodb.net/?retryWrites=true&w=majority"
+    cluster = f""
     client = MongoClient(cluster)
     mydb = client["Names"]
     mycol = ""
