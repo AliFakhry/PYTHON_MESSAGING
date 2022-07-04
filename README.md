@@ -1,4 +1,4 @@
-Software purpose:
+Software Purpose:
 
 1. Store names and phone numbers within a MongoDB database.
 2. Retrieve those numbers and names for marketing purposes (ONLY if compliant with the TCPA).
