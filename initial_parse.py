@@ -6,7 +6,7 @@ from MongoDB import add_database
 def main():
     print("PARSE INITIAL. ")
     password = input("ENTER MongoDB Password: ")
-    cluster = f"mongodb+srv://Phone_Data:{password}@cluster0.xzech.mongodb.net/?retryWrites=true&w=majority"
+    cluster = f""
     client = MongoClient(cluster)
     mydb = client["Names"]
 
