@@ -8,5 +8,5 @@ Software Purpose:
 
 Notes:
 
-1. Sensitive information has been redacted
-2. Testing capabilities has been implemented via the code
+1. Sensitive information has been redacted.
+2. Various testing methods have been implemented via the code.
