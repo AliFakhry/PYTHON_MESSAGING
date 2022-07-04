@@ -10,7 +10,7 @@ def main():
     client = MongoClient(cluster)
     mydb = client["Names"]
 
-    company = input("COMPANY (Bridge, WCE, Exceptional, Beyond): ")
+    company = input("")
     open_str = os.path.expanduser(f"~/Downloads/GetFeedback/{company}_Initial/Customers.xlsx")
     excel_sheet = openpyxl.load_workbook(open_str)
     sh = excel_sheet.active

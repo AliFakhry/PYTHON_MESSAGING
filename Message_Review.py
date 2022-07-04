@@ -26,20 +26,20 @@ def pos_message(number, carrier, name, company):
     return t_message
 
 def company_review(company, version):
-    if company == "WCE":
+    if company == "":
         if version == "mobile":
-            return "http://shorturl.at/hjnIM"
-        return "https://shorturl.at/szCNT"
-    elif company == "Bridge":
+            return ""
+        return ""
+    elif company == "":
         if version == "mobile":
-            return "https://shorturl.at/aflKW"
-        return "https://shorturl.at/flJW5"
-    elif company == "Beyond":
+            return ""
+        return ""
+    elif company == "":
         if version == "mobile":
-            return "https://shorturl.at/duOSZ"
-        return "https://shorturl.at/rGZ67"
-    elif company == "Exceptional":
+            return ""
+        return ""
+    elif company == "":
         if version == "mobile":
-            return "https://shorturl.at/jkoxO"
+            return ""
         else:
-            return "https://shorturl.at/ckoHX"
+            return ""
